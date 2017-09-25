@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MyBank.Model
 {
-    public class GroupBill
+    [DataContract]
+    public class TradePoint
     {
-        public GroupBill(string name, string currency)
+        public TradePoint(string name, string currency)
         {
             Guid = Guid.NewGuid();
             GroupName = name;

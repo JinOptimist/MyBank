@@ -14,7 +14,7 @@ namespace MyBank
 {
     public partial class Form1 : Form
     {
-        private List<GroupBill> BillsGroups { get; set; }
+        private List<TradePoint> BillsGroups { get; set; }
 
         public Form1()
         {
@@ -27,38 +27,55 @@ namespace MyBank
             var lines = File.ReadAllLines(path, Encoding.UTF8);
             var bills = lines.Select(x => new Bill(x));
 
-            BillsGroups = new List<GroupBill>();
+            BillsGroups = new List<TradePoint>();
             foreach (var bill in bills) {
                 var currentGroup = BillsGroups.FirstOrDefault(x => x.GroupName == bill.Desc);
                 if (currentGroup == null) {
-                    currentGroup = new GroupBill(bill.Desc, bill.Currency);
+                    currentGroup = new TradePoint(bill.Desc, bill.Currency);
                     BillsGroups.Add(currentGroup);
                 }
                 currentGroup.Bills.Add(bill);
             }
             BillsGroups = BillsGroups.OrderByDescending(x => x.MainSumm).ToList();
 
-            var eatMarks = new List<string> { "KRASAVIK", "MCDONALDS", "RESTORAN", "EVROOPT", "KOFEYNYA", "WOK.BY" };
-            ReportTree.Nodes.Add(CreateTreeNode("Еда", eatMarks));
+            var spendingGroups = new List<SpendingGroup>();
 
+            var eatMarks = new List<string> { "KRASAVIK", "MCDONALDS", "RESTORAN", "EVROOPT", "KOFEYNYA", "WOK.BY" };
+            spendingGroups.Add(new SpendingGroup("Еда", eatMarks));
+            
             var sportMarks = new List<string> { "ADRENALIN" };
-            ReportTree.Nodes.Add(CreateTreeNode("Спорт", sportMarks));
+            spendingGroups.Add(new SpendingGroup("Спорт", sportMarks));
 
             var moviesMarks = new List<string> { "SILVERSCREEN", "KINO.BYCARD" };
-            ReportTree.Nodes.Add(CreateTreeNode("Кино", moviesMarks));
+            spendingGroups.Add(new SpendingGroup("Кино", moviesMarks));
+
+            spendingGroups.ForEach(x => ReportTree.Nodes.Add(CreateTreeNode(x)));
+
+            var jsonStr = SerializeHelper.Serialize<List<SpendingGroup>>(spendingGroups);
+            var jsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "groupSetting.json");
+
+            File.WriteAllText(jsonPath, jsonStr);
 
             var otherNode = new TreeNode($"Остальное. Сумма: {BillsGroups.Sum(x => x.MainSumm)}. Счетов: {BillsGroups.Sum(x => x.Bills.Count())}");
             BillsGroups.ForEach(x => otherNode.Nodes.Add(x.ToString()));
             ReportTree.Nodes.Add(otherNode);
         }
 
-        private TreeNode CreateTreeNode(string name, List<string> groupMarks)
+        private void Test(List<SpendingGroup> spendingGroups)
+        {
+            foreach(var a in spendingGroups) {
+                
+            }
+            
+        }
+
+        private TreeNode CreateTreeNode(SpendingGroup spendingGroup)
         {
             var node = new TreeNode();
 
             double summ = 0;
             var count = 0;
-            foreach (var mark in groupMarks) {
+            foreach (var mark in spendingGroup.Marks) {
                 var groupBill = BillsGroups.FirstOrDefault(x => x.GroupName.Contains(mark));
                 if (groupBill != null) {
                     summ += groupBill.MainSumm;
@@ -67,7 +84,7 @@ namespace MyBank
                     BillsGroups.Remove(groupBill);
                 }
             }
-            node.Text = $"{name}. Сумма: {summ}. Счетов: {count}";
+            node.Text = $"{spendingGroup.Name}. Сумма: {summ}. Счетов: {count}";
             return node;
         }
 
