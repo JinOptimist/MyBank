@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Runtime.Serialization.Json;
+using System.Web.Script.Serialization;
 using System.Text;
 
 namespace MyBank
@@ -9,21 +9,16 @@ namespace MyBank
     {
         public static string Serialize<T>(T obj)
         {
-            var serializer = new DataContractJsonSerializer(obj.GetType());
-            var ms = new MemoryStream();
-            serializer.WriteObject(ms, obj);
-            var retVal = Encoding.UTF8.GetString(ms.ToArray());
-            return retVal;
+            var jsonSerialiser = new JavaScriptSerializer();
+            var json = jsonSerialiser.Serialize(obj);
+            return json;
         }
 
         public static T Deserialize<T>(string json)
         {
-            var obj = Activator.CreateInstance<T>();
-            var ms = new MemoryStream(Encoding.Unicode.GetBytes(json));
-            var serializer = new DataContractJsonSerializer(obj.GetType());
-            obj = (T)serializer.ReadObject(ms);
-            ms.Close();
-            return obj;
+            var jsonSerialiser = new JavaScriptSerializer();
+            var model = jsonSerialiser.Deserialize<T>(json);
+            return model;
         }
     }
 }

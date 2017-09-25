@@ -7,20 +7,21 @@ using System.Threading.Tasks;
 
 namespace MyBank.Model
 {
-    [DataContract]
     public class TradePoint
     {
+        public TradePoint() { }
+
         public TradePoint(string name, string currency)
         {
             Guid = Guid.NewGuid();
-            GroupName = name;
+            GroupDesc = name;
             Currency = currency;
             Bills = new List<Bill>();
         }
 
         public Guid Guid { get; }
 
-        public string GroupName { get; set; }
+        public string GroupDesc { get; set; }
 
         public string Currency { get; set; }
 
@@ -30,7 +31,7 @@ namespace MyBank.Model
 
         public override string ToString()
         {
-            return $"{MainSumm} {Currency} => {GroupName} *** Всего счетов: {Bills.Count()}";
+            return $"{MainSumm} {Currency} => {GroupDesc} *** Всего счетов: {Bills.Count()}";
         }
     }
 }

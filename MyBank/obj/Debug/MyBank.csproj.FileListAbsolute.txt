@@ -8,3 +8,13 @@ E:\projectPrivate\MyBank\MyBank\obj\Debug\MyBank.csproj.GenerateResource.Cache
 E:\projectPrivate\MyBank\MyBank\obj\Debug\MyBank.csproj.CoreCompileInputs.cache
 E:\projectPrivate\MyBank\MyBank\obj\Debug\MyBank.exe
 E:\projectPrivate\MyBank\MyBank\obj\Debug\MyBank.pdb
+d:\+GitHub\MyBank\MyBank\obj\Debug\MyBank.csprojResolveAssemblyReference.cache
+d:\+GitHub\MyBank\MyBank\obj\Debug\MyBank.Form1.resources
+d:\+GitHub\MyBank\MyBank\obj\Debug\MyBank.Properties.Resources.resources
+d:\+GitHub\MyBank\MyBank\obj\Debug\MyBank.csproj.GenerateResource.Cache
+d:\+GitHub\MyBank\MyBank\obj\Debug\MyBank.csproj.CoreCompileInputs.cache
+d:\+GitHub\MyBank\MyBank\bin\Debug\MyBank.exe.config
+d:\+GitHub\MyBank\MyBank\bin\Debug\MyBank.exe
+d:\+GitHub\MyBank\MyBank\bin\Debug\MyBank.pdb
+d:\+GitHub\MyBank\MyBank\obj\Debug\MyBank.exe
+d:\+GitHub\MyBank\MyBank\obj\Debug\MyBank.pdb
