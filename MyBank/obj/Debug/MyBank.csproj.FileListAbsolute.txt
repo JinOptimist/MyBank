@@ -1,0 +1,10 @@
+E:\projectPrivate\MyBank\MyBank\bin\Debug\MyBank.exe.config
+E:\projectPrivate\MyBank\MyBank\bin\Debug\MyBank.exe
+E:\projectPrivate\MyBank\MyBank\bin\Debug\MyBank.pdb
+E:\projectPrivate\MyBank\MyBank\obj\Debug\MyBank.csprojResolveAssemblyReference.cache
+E:\projectPrivate\MyBank\MyBank\obj\Debug\MyBank.Form1.resources
+E:\projectPrivate\MyBank\MyBank\obj\Debug\MyBank.Properties.Resources.resources
+E:\projectPrivate\MyBank\MyBank\obj\Debug\MyBank.csproj.GenerateResource.Cache
+E:\projectPrivate\MyBank\MyBank\obj\Debug\MyBank.csproj.CoreCompileInputs.cache
+E:\projectPrivate\MyBank\MyBank\obj\Debug\MyBank.exe
+E:\projectPrivate\MyBank\MyBank\obj\Debug\MyBank.pdb
