@@ -43,10 +43,17 @@ namespace MyBank
         public Form1()
         {
             InitializeComponent();
-            SpendingGroups.ForEach(x => SpendingGroupList.Items.Add(x.Name));
+            Init();
+        }
+
+        private void Init()
+        {
+            SpendingGroupComboBox.Items.Clear();
+            SpendingGroups.ForEach(x => SpendingGroupComboBox.Items.Add(x.Name));
             MainPathLabel.Text = pathToMainBill;
             SaveSettingsBtn.Enabled = false;
             AddItemToGroupBtn.Enabled = false;
+            NewGroupName.Text = string.Empty;
         }
 
         private void DoGood_Click(object sender, EventArgs e)
@@ -101,7 +108,7 @@ namespace MyBank
         {
             var guid = ReportTree.SelectedNode.Name;
             var bill = TradePoints.FirstOrDefault(x => x.Guid.ToString() == guid);
-            var spendingGroup = SpendingGroupList.SelectedItem;
+            var spendingGroup = SpendingGroupComboBox.SelectedItem;
             var gr = SpendingGroups.First(x => x.Name == spendingGroup);
             gr.Marks.Add(bill.GroupDesc);
             DoGood_Click(null, null);
@@ -128,6 +135,30 @@ namespace MyBank
         private void SpendingGroupList_SelectedValueChanged(object sender, EventArgs e)
         {
             AddItemToGroupBtn.Enabled = true;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            var newGroupName = NewGroupName.Text;
+            if (string.IsNullOrEmpty(newGroupName))
+            {
+                return;
+            }
+
+            SpendingGroups.Add(new SpendingGroup(newGroupName, new List<string>()));
+            Init();
+            DoGood_Click(null, null);
+            SaveSettingsBtn.Enabled = true;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var spendingGroup = SpendingGroupComboBox.SelectedItem;
+            var gr = SpendingGroups.First(x => x.Name == spendingGroup);
+            SpendingGroups.Remove(gr);
+            SaveSettingsBtn.Enabled = true;
+            Init();
+            DoGood_Click(null, null);
         }
     }
 }

@@ -28,7 +28,7 @@
         private void InitializeComponent()
         {
             this.DoGood = new System.Windows.Forms.Button();
-            this.SpendingGroupList = new System.Windows.Forms.ComboBox();
+            this.SpendingGroupComboBox = new System.Windows.Forms.ComboBox();
             this.ReportTree = new System.Windows.Forms.TreeView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,6 +37,9 @@
             this.button2 = new System.Windows.Forms.Button();
             this.MainPathLabel = new System.Windows.Forms.Label();
             this.SaveSettingsBtn = new System.Windows.Forms.Button();
+            this.AddNewGroupBtn = new System.Windows.Forms.Button();
+            this.NewGroupName = new System.Windows.Forms.TextBox();
+            this.RemoveGroupBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // DoGood
@@ -51,14 +54,14 @@
             this.DoGood.UseVisualStyleBackColor = false;
             this.DoGood.Click += new System.EventHandler(this.DoGood_Click);
             // 
-            // SpendingGroupList
+            // SpendingGroupComboBox
             // 
-            this.SpendingGroupList.FormattingEnabled = true;
-            this.SpendingGroupList.Location = new System.Drawing.Point(12, 589);
-            this.SpendingGroupList.Name = "SpendingGroupList";
-            this.SpendingGroupList.Size = new System.Drawing.Size(121, 21);
-            this.SpendingGroupList.TabIndex = 1;
-            this.SpendingGroupList.SelectedValueChanged += new System.EventHandler(this.SpendingGroupList_SelectedValueChanged);
+            this.SpendingGroupComboBox.FormattingEnabled = true;
+            this.SpendingGroupComboBox.Location = new System.Drawing.Point(12, 589);
+            this.SpendingGroupComboBox.Name = "SpendingGroupComboBox";
+            this.SpendingGroupComboBox.Size = new System.Drawing.Size(121, 21);
+            this.SpendingGroupComboBox.TabIndex = 1;
+            this.SpendingGroupComboBox.SelectedValueChanged += new System.EventHandler(this.SpendingGroupList_SelectedValueChanged);
             // 
             // ReportTree
             // 
@@ -89,9 +92,9 @@
             // 
             this.AddItemToGroupBtn.Location = new System.Drawing.Point(139, 587);
             this.AddItemToGroupBtn.Name = "AddItemToGroupBtn";
-            this.AddItemToGroupBtn.Size = new System.Drawing.Size(75, 23);
+            this.AddItemToGroupBtn.Size = new System.Drawing.Size(136, 23);
             this.AddItemToGroupBtn.TabIndex = 5;
-            this.AddItemToGroupBtn.Text = "Поместить";
+            this.AddItemToGroupBtn.Text = "Поместить в эту группу";
             this.AddItemToGroupBtn.UseVisualStyleBackColor = true;
             this.AddItemToGroupBtn.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -120,7 +123,7 @@
             // 
             // SaveSettingsBtn
             // 
-            this.SaveSettingsBtn.Location = new System.Drawing.Point(434, 576);
+            this.SaveSettingsBtn.Location = new System.Drawing.Point(434, 616);
             this.SaveSettingsBtn.Name = "SaveSettingsBtn";
             this.SaveSettingsBtn.Size = new System.Drawing.Size(134, 23);
             this.SaveSettingsBtn.TabIndex = 8;
@@ -128,11 +131,41 @@
             this.SaveSettingsBtn.UseVisualStyleBackColor = true;
             this.SaveSettingsBtn.Click += new System.EventHandler(this.SaveSettingsBtn_Click);
             // 
+            // AddNewGroupBtn
+            // 
+            this.AddNewGroupBtn.Location = new System.Drawing.Point(138, 614);
+            this.AddNewGroupBtn.Name = "AddNewGroupBtn";
+            this.AddNewGroupBtn.Size = new System.Drawing.Size(137, 23);
+            this.AddNewGroupBtn.TabIndex = 9;
+            this.AddNewGroupBtn.Text = "Добавить новую группу";
+            this.AddNewGroupBtn.UseVisualStyleBackColor = true;
+            this.AddNewGroupBtn.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // NewGroupName
+            // 
+            this.NewGroupName.Location = new System.Drawing.Point(12, 616);
+            this.NewGroupName.Name = "NewGroupName";
+            this.NewGroupName.Size = new System.Drawing.Size(120, 20);
+            this.NewGroupName.TabIndex = 10;
+            // 
+            // RemoveGroupBtn
+            // 
+            this.RemoveGroupBtn.Location = new System.Drawing.Point(281, 587);
+            this.RemoveGroupBtn.Name = "RemoveGroupBtn";
+            this.RemoveGroupBtn.Size = new System.Drawing.Size(99, 23);
+            this.RemoveGroupBtn.TabIndex = 11;
+            this.RemoveGroupBtn.Text = "Удалить группу";
+            this.RemoveGroupBtn.UseVisualStyleBackColor = true;
+            this.RemoveGroupBtn.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(580, 660);
+            this.Controls.Add(this.RemoveGroupBtn);
+            this.Controls.Add(this.NewGroupName);
+            this.Controls.Add(this.AddNewGroupBtn);
             this.Controls.Add(this.SaveSettingsBtn);
             this.Controls.Add(this.MainPathLabel);
             this.Controls.Add(this.button2);
@@ -140,7 +173,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ReportTree);
-            this.Controls.Add(this.SpendingGroupList);
+            this.Controls.Add(this.SpendingGroupComboBox);
             this.Controls.Add(this.DoGood);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -152,7 +185,7 @@
         #endregion
 
         private System.Windows.Forms.Button DoGood;
-        private System.Windows.Forms.ComboBox SpendingGroupList;
+        private System.Windows.Forms.ComboBox SpendingGroupComboBox;
         private System.Windows.Forms.TreeView ReportTree;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -161,6 +194,9 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label MainPathLabel;
         private System.Windows.Forms.Button SaveSettingsBtn;
+        private System.Windows.Forms.Button AddNewGroupBtn;
+        private System.Windows.Forms.TextBox NewGroupName;
+        private System.Windows.Forms.Button RemoveGroupBtn;
     }
 }
 
